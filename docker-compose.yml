@@ -3,3 +3,16 @@ services:
     image: first-nest:latest
     ports:
       - 3000:3000
+  database:
+    image: postgres:14.2-alpine
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local

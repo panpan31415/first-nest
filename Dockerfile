@@ -1,5 +1,5 @@
 FROM node:17-alpine3.14
-WORKDIR .
+WORKDIR /app
 
 COPY ["package.json","package-lock.json", "./"]
 RUN npm i

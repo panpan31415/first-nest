@@ -3,7 +3,9 @@ services:
     image: first-nest:latest
     ports:
       - 3000:3000
-  database:
+    volumes:
+      - $PWD:/app
+  db:
     image: postgres:14.2-alpine
     ports:
       - 5432:5432
@@ -11,6 +13,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=nest
     volumes:
       - db:/var/lib/postgresql/data
 volumes:
